@@ -1,4 +1,4 @@
-package personal.cyy.automall.controller;
+package personal.cyy.automall.api;
 
 import personal.cyy.automall.dao.IUserDao;
 

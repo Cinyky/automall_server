@@ -20,4 +20,9 @@ public class User {
      */
     private String wxId;
 
+    /**
+     * 角色 管理员之类
+     */
+    private int role;
+
 }

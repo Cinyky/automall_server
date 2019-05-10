@@ -1,4 +1,4 @@
-package personal.cyy.automall.controller;
+package personal.cyy.automall.api;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
-public class GoodsController {
+public class TestController {
 
     /**
      * test api
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject login() throws Exception
     {
@@ -29,6 +29,4 @@ public class GoodsController {
         obj.put("msg","HelloWorld");
         return obj;
     }
-
-
 }

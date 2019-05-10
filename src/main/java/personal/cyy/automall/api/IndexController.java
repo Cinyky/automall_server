@@ -1,4 +1,4 @@
-package personal.cyy.automall.controller;
+package personal.cyy.automall.api;
 
 import org.springframework.stereotype.Controller;
 

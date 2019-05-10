@@ -9,4 +9,18 @@ import lombok.Data;
  */
 @Data
 public class CarConfiguration {
+    /**
+     * 商品ID
+     */
+    private String uuid;
+
+    /**
+     * 汽车ID
+     */
+    private String carId;
+
+    /**
+     * 信息
+     */
+    private String info;
 }

@@ -24,7 +24,7 @@ public class CarImage {
     private String carId;
 
     /**
-     * 图片
+     * 图片 url? 之后放到mongodb
      */
     private String image;
 

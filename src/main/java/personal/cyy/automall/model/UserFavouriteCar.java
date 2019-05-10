@@ -10,4 +10,20 @@ import lombok.Data;
 
 @Data
 public class UserFavouriteCar {
+
+    /**
+     * 收藏ID
+     */
+    private String uuid;
+
+    /**
+     * userID
+     */
+    private String userId;
+
+    /**
+     * carID
+     */
+    private String carId;
+
 }
