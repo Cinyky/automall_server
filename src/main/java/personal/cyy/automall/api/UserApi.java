@@ -11,7 +11,7 @@ import javax.annotation.Resource;
  */
 
 
-public class UserController {
+public class UserApi {
 
     @Resource
     IUserDao userDao;

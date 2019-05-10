@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
-public class TestController {
+public class GoodsApi {
 
     /**
      * test api
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject login() throws Exception
     {
@@ -29,4 +29,6 @@ public class TestController {
         obj.put("msg","HelloWorld");
         return obj;
     }
+
+
 }

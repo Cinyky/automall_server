@@ -7,5 +7,5 @@ package personal.cyy.automall.api;
  */
 
 
-public class UploadController {
+public class UploadApi {
 }
