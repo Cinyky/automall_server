@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<project name="cok-game"  >
+    <target name="copy"  >
+    	<copy file="build/libs/COK-1.1.13-Extension.jar" tofile="../../smartfoxserver/SFS2X/extensions/SHWC/COK-1.1.13-Extension.jar"/>
+    </target>
+</project>
