@@ -4,48 +4,62 @@ server:
 
 spring:
   application:
-      name: auto-mall
+    name: auto-mall
   http:
-      encoding:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+    servelet:
+      multipart:
+        max-file-size: 10MB
+        max-request-size: 10MB
         enabled: true
-        force: true
-        charset: UTF-8
-      servelet:
-        multipart:
-          max-file-size: 10MB
-          max-request-size: 10MB
-          enabled: true
+
+  #配置redis数据库连接
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0 #默认是索引为的0的数据库
+    jedis:
+      pool:
+        min-idle: 1
+        max-idle: 5
+        max-active: 20
+        max-wait: 60000
+
   # 数据源配置相关
   datasource:
-     #简略版datasource
-     # name: serverbase
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/auto_mall?useUnicode=true&characterEncoding=utf-8
-      username: root
-      password: admin123
-      #druid 连接池
-      type: com.alibaba.druid.pool.DruidDataSource
-      #最大活跃数
-      maxActive: 20
-      #初始化数量
-      initialSize: 1
-      #最大连接等待超时时间
-      maxWait: 60000
-      #打开PSCache，并且指定每个连接PSCache的大小
-      poolPreparedStatements: true
-      maxPoolPreparedStatementPerConnectionSize: 20
-      #通过connectionProperties属性来打开mergeSql功能；慢SQL记录
-      #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-      minIdle: 1
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: select 1 from dual
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
-      filters: stat, wall, log4j
-      #druid 连接池 end
+    #简略版datasource
+    # name: serverbase
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/auto_mall?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: admin123
+    #druid 连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    #最大活跃数
+    maxActive: 20
+    #初始化数量
+    initialSize: 1
+    #最大连接等待超时时间
+    maxWait: 60000
+    #打开PSCache，并且指定每个连接PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #通过connectionProperties属性来打开mergeSql功能；慢SQL记录
+    #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
+    filters: stat, wall, log4j
+    #druid 连接池 end
+
   # 模板相关配置
   thymeleaf:
     cache: false
@@ -54,14 +68,14 @@ spring:
     suffix: .html
     encoding: UTF-8
     mode: HTML
-  # 模板相关配置 end
+    # 模板相关配置 end
 
-  # mybatis
-  mybatis:
-    mapper-locations: classpath*:mappers/*
-#    configuration:
-#          mapUnderscoreToCamelCase: true
-   # mybatis end
+    # mybatis remove
+    #  mybatis:
+    #    mapper-locations: classpath*:mappers/*
+    #    configuration:
+    #          mapUnderscoreToCamelCase: true
+    # mybatis end
 
   jpa:
     database: MySQL
@@ -105,13 +119,3 @@ management:
   server:
     port: 8001
 
-  #配置redis数据库连接
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    pool:
-      max-idle: 20
-      min-idle: 1
-      max-active: 20
-      max-wait: 60000
-    database: 0 #默认是索引为的0的数据库
