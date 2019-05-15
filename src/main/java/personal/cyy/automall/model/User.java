@@ -15,7 +15,7 @@ public class User {
     /**
      * 商品ID
      */
-    private String uuid;
+    private String id;
 
     /**
      * 微信的ID

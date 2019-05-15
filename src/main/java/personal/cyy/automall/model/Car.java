@@ -16,7 +16,7 @@ public class Car implements Serializable {
     /**
      * 商品ID
      */
-    private String uuid;
+    private String id;
 
     /**
      * 商品名称

@@ -12,7 +12,7 @@
         <h3 class="panel-title">访问model</h3>
     </div>
     <div class="panel-body">
-        <span th:text="${user.uuid}"></span>
+        <span th:text="${user.id}"></span>
     </div>
 </div>
 <div th:if="${not #lists.isEmpty(users)}">
@@ -23,7 +23,7 @@
         <div class="panel-body">
             <ul class="list-group">
                 <li class="list-group-item" th:each="user : ${users}">
-                    <span th:text="${user.uuid}"></span>
+                    <span th:text="${user.id}"></span>
                     <span th:text="${user.wxId}"></span>
                     <button class="btn" th:onclick="'getName('+${user.role}+');'">获得名字</button>
                 </li>
@@ -37,7 +37,7 @@
 <script th:src="@{https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js}"></script>
 <script th:inline="javascript">
     var user = [[${user}]];
-    console.log(user.uuid + "/" + user.wxId);
+    console.log(user.id + "/" + user.wxId);
 
     function getName(name) {
         console.log(name);

@@ -75,6 +75,11 @@ spring:
     configuration:
           mapUnderscoreToCamelCase: true
     # mybatis end
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fileDB
 
 #  jpa:
 #    database: MySQL

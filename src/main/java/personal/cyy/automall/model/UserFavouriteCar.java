@@ -14,7 +14,7 @@ public class UserFavouriteCar {
     /**
      * 收藏ID
      */
-    private String uuid;
+    private String id;
 
     /**
      * userID

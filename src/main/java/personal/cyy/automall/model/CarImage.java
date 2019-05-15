@@ -15,8 +15,7 @@ public class CarImage {
     /**
      * 图片ID
      */
-    private String uuid;
-
+    private String id;
 
     /**
      * 汽车ID
@@ -24,9 +23,9 @@ public class CarImage {
     private String carId;
 
     /**
-     * 图片 url? 之后放到mongodb
+     *  存储在mongo中的文件名
      */
-    private String image;
+    private String imageId;
 
 
 }

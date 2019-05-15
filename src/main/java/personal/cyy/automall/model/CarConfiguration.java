@@ -12,7 +12,7 @@ public class CarConfiguration {
     /**
      * 商品ID
      */
-    private String uuid;
+    private String id;
 
     /**
      * 汽车ID
