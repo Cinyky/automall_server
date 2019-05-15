@@ -1,5 +1,6 @@
 package personal.cyy.automall.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
@@ -9,6 +10,7 @@ import lombok.Data;
  */
 
 @Data
+@AllArgsConstructor
 public class User {
     /**
      * 商品ID
@@ -24,5 +26,7 @@ public class User {
      * 角色 管理员之类
      */
     private int role;
+
+
 
 }

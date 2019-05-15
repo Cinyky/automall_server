@@ -14,14 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
-public class TestApi {
+@RequestMapping("/api/test")
+public class TestApi extends IApi {
 
     /**
      * test api
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    @RequestMapping(value = "/",method = RequestMethod.GET)
     @ResponseBody
     public JSONObject login() throws Exception
     {

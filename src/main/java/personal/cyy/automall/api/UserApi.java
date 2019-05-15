@@ -1,5 +1,7 @@
 package personal.cyy.automall.api;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import personal.cyy.automall.dao.IUserDao;
 
 import javax.annotation.Resource;
@@ -10,8 +12,9 @@ import javax.annotation.Resource;
  * @Date 19:58 2019-05-10
  */
 
-
-public class UserApi {
+@Controller
+@RequestMapping("/api/user")
+public class UserApi extends IApi {
 
     @Resource
     IUserDao userDao;

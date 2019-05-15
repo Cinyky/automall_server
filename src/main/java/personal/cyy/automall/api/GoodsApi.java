@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
-public class GoodsApi {
+@RequestMapping("/api/goods")
+public class GoodsApi extends IApi {
 
     /**
      * test api
