@@ -1,6 +1,3 @@
-<
-script
-type = "text/javascript" >
 
     jQuery(function ($) {
 
@@ -344,5 +341,3 @@ type = "text/javascript" >
 
 
     })
-
-    < /script>
