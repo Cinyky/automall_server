@@ -11,4 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/api/login")
 public class LoginApi extends IApi {
+
+
 }
