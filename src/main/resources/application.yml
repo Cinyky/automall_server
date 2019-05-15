@@ -73,7 +73,7 @@ spring:
   mybatis:
     mapper-locations: classpath*:mappers/*
     configuration:
-          mapUnderscoreToCamelCase: true
+      mapUnderscoreToCamelCase: true
     # mybatis end
   data:
     mongodb:

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 测试controller
+ *
  * @Author Cinyky
  * @Date 10:57 2019-05-10
  */
@@ -19,15 +20,15 @@ public class GoodsApi extends IApi {
 
     /**
      * test api
+     *
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public JSONObject login() throws Exception
-    {
+    public JSONObject login() throws Exception {
         JSONObject obj = new JSONObject();
-        obj.put("msg","HelloWorld");
+        obj.put("msg", "HelloWorld");
         return obj;
     }
 

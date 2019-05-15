@@ -24,12 +24,9 @@ public enum CarStatus {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     /**
      * 获取对应的数据
+     *
      * @param value
      * @return
      */
@@ -40,5 +37,9 @@ public enum CarStatus {
             }
         }
         return null;
+    }
+
+    public int getValue() {
+        return value;
     }
 }

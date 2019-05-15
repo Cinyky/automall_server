@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * 结果返回
+ *
  * @Author Cinyky
  * @Date 15:04 2019-05-15
  */

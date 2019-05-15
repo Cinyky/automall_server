@@ -5,6 +5,7 @@ import lombok.Data;
 
 /**
  * 存储车图片
+ *
  * @Author Cinyky
  * @Date 16:41 2019-05-10
  */
@@ -23,7 +24,7 @@ public class CarImage {
     private String carId;
 
     /**
-     *  存储在mongo中的文件名
+     * 存储在mongo中的文件名
      */
     private String imageId;
 

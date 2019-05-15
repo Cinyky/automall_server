@@ -21,10 +21,6 @@ public enum Role {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public static Role getByValue(int value) {
         for (Role role : Role.values()) {
             if (value == role.getValue()) {
@@ -32,6 +28,10 @@ public enum Role {
             }
         }
         return null;
+    }
+
+    public int getValue() {
+        return value;
     }
 
 }

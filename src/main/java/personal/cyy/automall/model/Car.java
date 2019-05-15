@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * 商品列表
+ *
  * @Author Cinyky
  * @Date 13:39 2019-05-10
  */
@@ -91,9 +92,6 @@ public class Car implements Serializable {
      * 更新时间
      */
     private long updateTime;
-
-
-
 
 
 }

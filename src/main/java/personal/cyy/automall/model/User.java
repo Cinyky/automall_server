@@ -28,5 +28,4 @@ public class User {
     private int role;
 
 
-
 }
