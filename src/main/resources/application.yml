@@ -80,6 +80,8 @@ spring:
       host: localhost
       port: 27017
       database: fileDB
+  mvc:
+    static-path-pattern: /static/**
 
 #  jpa:
 #    database: MySQL

@@ -23,4 +23,6 @@ public interface TemplateNameConstant {
      */
     String RESULT = "result";
 
+    String TEST = "test";
+
 }

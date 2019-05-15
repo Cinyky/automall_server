@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="common_js(scripts)">
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+
+
+    <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+
+
+    <!-- <![endif]-->
+
+
+    <!--[if IE]>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <![endif]-->
+
+
+    <!--[if !IE]> -->
+
+
+    <script type="text/javascript">
+
+        window.jQuery || document.write("<script src='../static/assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");
+
+    </script>
+
+
+    <!-- <![endif]-->
+
+
+    <!--[if IE]>
+
+    <script type="text/javascript">
+
+        window.jQuery || document.write("<script src='../static/assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");
+
+    </script>
+
+    <![endif]-->
+
+
+    <script type="text/javascript">
+
+        if ("ontouchend" in document) document.write("<script src='../static/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+
+    </script>
+
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+
+    <script src="../static/assets/js/typeahead-bs2.min.js"></script>
+
+
+    <!-- page specific plugin scripts -->
+
+
+    <!--[if lte IE 8]>
+
+    <script src="../static/assets/js/excanvas.min.js"></script>
+
+    <![endif]-->
+
+
+    <script src="../static/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script src="../static/assets/js/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="../static/assets/js/jquery.slimscroll.min.js"></script>
+
+    <script src="../static/assets/js/jquery.easy-pie-chart.min.js"></script>
+
+    <script src="../static/assets/js/jquery.sparkline.min.js"></script>
+
+    <script src="../static/assets/js/flot/jquery.flot.min.js"></script>
+
+    <script src="../static/assets/js/flot/jquery.flot.pie.min.js"></script>
+
+    <script src="../static/assets/js/flot/jquery.flot.resize.min.js"></script>
+
+
+    <!-- ace scripts -->
+
+
+    <script src="../static/assets/js/ace-elements.min.js"></script>
+
+    <script src="../static/assets/js/ace.min.js"></script>
+
+    <!-- inline scripts related to this page -->
+
+    <th:block th:if="${scripts} != null" th:replace="${scripts}"/>
+</div>
+
+</html>
+
