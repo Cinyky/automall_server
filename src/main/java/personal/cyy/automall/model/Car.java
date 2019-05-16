@@ -45,6 +45,16 @@ public class Car implements Serializable {
     private Long regTime;
 
     /**
+     * 保险时间
+     */
+    private Long insuranceTime;
+
+    /**
+     * 验车时间
+     */
+    private Long checkTime;
+
+    /**
      * 过户次数
      */
     private int transferNum;
@@ -55,23 +65,26 @@ public class Car implements Serializable {
     private float outputVolume;
 
     /**
-     * 汽车排放标准
-     */
-    private float outputStandard;
-    /**
      * 行驶里程
      */
     private int distance;
+
+    /**
+     * 价格
+     */
+    private int price;
+
+    /**
+     * 汽车排放标准
+     */
+    private String outputStandard;
+
 
     /**
      * 车身颜色
      */
     private String color;
 
-    /**
-     * 价格
-     */
-    private int price;
 
     /**
      * 手动自动

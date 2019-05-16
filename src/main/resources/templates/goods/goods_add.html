@@ -1,30 +1,501 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta content="text/html;charset=UTF-8"/>
-    <meta content="width=device-width,initial-scale=1" name="viewport"/>
-    <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
-</head>
-<body>
-单个文件上传：<br/>
-<form action="/upload" enctype="multipart/form-data" method="post">
-    <input name="file" type="file"/>
-    <input type="submit" value="提交上传"/>
-</form>
-<br/>
-多个文件上传：
-<form action="/uploads" enctype="multipart/form-data" method="post">
-    文件1：<input name="file" type="file"/><br/>
-    文件2：<input name="file" type="file"/><br/>
-    文件3：<input name="file" type="file"/><br/>
-    <input type="submit" value="上传多个文件"/>
-</form>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<form action="/file/uploadImage" enctype="multipart/form-data" method="post">
-    <input name="image" type="file"/>
-    <input type="submit" value="提交上传"/>
-</form>
+<!--通用CSS-->
+<head th:replace="common/common_head :: common_head(~{::title})">
+    <title>新增商品</title>
+</head>
+
+<body>
+<!--nav-->
+<div th:replace="layout/nav::nav"/>
+
+
+<div class="main-container" id="main-container">
+
+    <script type="text/javascript">
+
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+
+    </script>
+
+
+    <div class="main-container-inner">
+
+        <a class="menu-toggler" id="menu-toggler" href="#">
+
+            <span class="menu-text"></span>
+
+        </a>
+
+
+        <!--sidebar-->
+        <div th:replace="layout/sidebar::sidebar"/>
+
+        <div class="main-content">
+
+            <div class="breadcrumbs" id="breadcrumbs">
+
+                <script type="text/javascript">
+
+                    try {
+                        ace.settings.check('breadcrumbs', 'fixed')
+                    } catch (e) {
+                    }
+
+                </script>
+
+
+                <ul class="breadcrumb">
+
+                    <li>
+
+                        <i class="icon-home home-icon"></i>
+
+                        <a href="#">Home</a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="#">Forms</a>
+
+                    </li>
+
+                    <li class="active">Form Elements</li>
+
+                </ul><!-- .breadcrumb -->
+
+
+                <div class="nav-search" id="nav-search">
+
+                    <form class="form-search">
+
+								<span class="input-icon">
+
+									<input type="text" placeholder="Search ..." class="nav-search-input"
+                                           id="nav-search-input" autocomplete="off"/>
+
+									<i class="icon-search nav-search-icon"></i>
+
+								</span>
+
+                    </form>
+
+                </div><!-- #nav-search -->
+
+            </div>
+
+
+            <div class="page-content">
+
+
+                <div class="row">
+
+                    <div class="col-xs-12">
+
+                        <!-- PAGE CONTENT BEGINS -->
+
+
+                        <form class="form-horizontal" role="form">
+
+                            <!--商品名称-->
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label no-padding-right" for="title"> 商品名称 </label>
+
+
+                                <div class="col-sm-9">
+
+                                    <input type="text" id="title" name="title" placeholder="商品名称"
+                                           class="col-xs-10 col-sm-5"/>
+
+                                </div>
+
+                            </div>
+                            <!--/.商品名称-->
+
+                            <!--TODO 商品描述-->
+
+                            <!--/.商品名称-->
+
+                            <div class="space-4"></div>
+
+                            <!--品牌-->
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label no-padding-right" for="band"> 品牌 </label>
+
+
+                                <div class="col-sm-9">
+
+                                    <input type="password" id="band" name="band" placeholder="宝马,奔驰 ..."
+                                           class="col-xs-10 col-sm-5"/>
+
+                                </div>
+
+                            </div>
+                            <!--/.品牌-->
+
+                            <div class="space-4"></div>
+
+                            <!--系列-->
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label no-padding-right" for="mark"> 车型 </label>
+
+
+                                <div class="col-sm-9">
+
+                                    <input type="password" id="mark" name="mark" placeholder="X3,X5"
+                                           class="col-xs-10 col-sm-5"/>
+
+                                </div>
+
+                            </div>
+                            <!--/.系列-->
+
+                            <div class="space-4"></div>
+
+                            <!--上牌时间-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">上牌时间</label>
+
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <input class="form-control date-picker input-medium" id="regTime" name="regTime"
+                                               type="text" data-date-format="dd-mm-yyyy">
+                                        <span class="input-group-addon">
+
+                                        <i class="icon-calendar bigger-110"></i>
+                                    </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <!--/.上牌时间-->
+
+
+                            <div class="space-4"></div>
+
+                            <!--保险时间-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">上牌时间</label>
+
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <input class="form-control date-picker input-medium" id="insuranceTime"
+                                               name="insuranceTime" type="text" data-date-format="dd-mm-yyyy">
+                                        <span class="input-group-addon">
+
+                                        <i class="icon-calendar bigger-110"></i>
+                                    </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <!--/.保险时间-->
+
+                            <div class="space-4"></div>
+
+                            <!--验车时间-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">验车时间</label>
+
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <input class="form-control date-picker input-medium" id="checkTime"
+                                               name="checkTime" type="text" data-date-format="dd-mm-yyyy">
+                                        <span class="input-group-addon">
+
+                                        <i class="icon-calendar bigger-110"></i>
+                                    </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <!--/.验车时间-->
+
+                            <div class="space-4"></div>
+                            <!--过户次数-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">过户次数</label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" class="input-medium" id="transferNum" name="transferNum"/>
+
+                                </div>
+
+                            </div>
+                            <!--/.过户次数-->
+
+                            <div class="space-4"></div>
+                            <!--汽车排量-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">汽车排量</label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" class="input-medium" id="outputVolume" name="outputVolume"
+                                           maxlength="3"/>
+
+                                </div>
+
+                            </div>
+                            <!--/.汽车排量-->
+
+
+                            <div class="space-4"></div>
+                            <!--行驶里程-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">行驶里程</label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" class="input-medium" id="distance" name="distance"
+                                           placeholder="单位km">KM
+                                </div>
+
+                            </div>
+                            <!--/.行驶里程-->
+
+
+                            <div class="space-4"></div>
+                            <!--价格-->
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">价格</label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" class="input-medium" id="price" name="price" placeholder="单位 万元"
+                                           maxlength="5"> 万元
+                                </div>
+
+                            </div>
+                            <!--/.价格-->
+
+
+                            <div class="space-4"></div>
+
+                            <!--配置-->
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label no-padding-right" for="configs">配置</label>
+
+
+                                <div class="col-sm-9">
+
+                                    <input type="text" name="configs" id="configs" value=""
+                                           placeholder="输入配置,亮点 ..."/>
+
+                                </div>
+
+                            </div>
+                            <!--/.配置-->
+
+                            <div class="space-4"></div>
+
+
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label no-padding-right" for="images">
+                                    添加图片</label>
+
+                                <div class="col-sm-4">
+
+                                    <input multiple="" type="file" name="images" id="images"/>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="images">
+                                    状态</label>
+                                <div class="col-xs-3">
+
+                                    <select class="form-control" id="form-field-select-1">
+
+                                        <option value="0">默认状态,不展示</option>
+
+                                        <option value="1">展示</option>
+
+                                        <option value="2">售空</option>
+
+                                    </select>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix form-actions">
+
+                                <div class="col-md-offset-3 col-md-9">
+
+                                    <button class="btn btn-info" type="button">
+
+                                        <i class="icon-ok bigger-110"></i>
+
+                                        提交
+
+                                    </button>
+
+
+                                    &nbsp; &nbsp; &nbsp;
+
+                                    <button class="btn" type="reset">
+
+                                        <i class="icon-undo bigger-110"></i>
+
+                                        重置
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                        </form>
+
+                        <!-- PAGE CONTENT ENDS -->
+
+                    </div><!-- /.col -->
+
+                </div><!-- /.row -->
+
+            </div><!-- /.page-content -->
+
+        </div><!-- /.main-content -->
+
+
+        <div class="ace-settings-container" id="ace-settings-container">
+
+            <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+
+                <i class="icon-cog bigger-150"></i>
+
+            </div>
+
+
+            <div class="ace-settings-box" id="ace-settings-box">
+
+                <div>
+
+                    <div class="pull-left">
+
+                        <select id="skin-colorpicker" class="hide">
+
+                            <option data-skin="default" value="#438EB9">#438EB9</option>
+
+                            <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+
+                            <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+
+                            <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+
+                        </select>
+
+                    </div>
+
+                    <span>&nbsp; Choose Skin</span>
+
+                </div>
+
+
+                <div>
+
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar"/>
+
+                    <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+
+                </div>
+
+
+                <div>
+
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar"/>
+
+                    <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+
+                </div>
+
+
+                <div>
+
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs"/>
+
+                    <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+
+                </div>
+
+
+                <div>
+
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl"/>
+
+                    <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+
+                </div>
+
+
+                <div>
+
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container"/>
+
+                    <label class="lbl" for="ace-settings-add-container">
+
+                        Inside
+
+                        <b>.container</b>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div><!-- /#ace-settings-container -->
+
+    </div><!-- /.main-container-inner -->
+
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+
+    </a>
+
+</div><!-- /.main-container -->
+
+
+<!-- basic scripts -->
+
+<!--使用公有js-->
+<div th:replace="common/common_js::common_js(~{::script})">
+    <!-- inline scripts related to this page -->
+    <script th:src="@{/static/assets/js/moudle/goods_add.js}"></script>
+</div>
+
+
+<!-- inline scripts related to this page -->
+
+
+
 
 </body>
+
 </html>
+
