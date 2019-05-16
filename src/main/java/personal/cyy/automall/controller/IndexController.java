@@ -4,10 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import personal.cyy.automall.constant.TemplateNameConstant;
-import personal.cyy.automall.model.User;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author Cinyky
@@ -20,15 +16,145 @@ public class IndexController extends IController {
 
     @RequestMapping("/index")
     public String template(Model model) {
-        User user = new User("1", "wx1", 1);
-        List<User> users = new ArrayList<>();
-        User user1 = new User("2", "wx2", 2);
-        User user2 = new User("3", "wx3", 3);
-        users.add(user1);
-        users.add(user2);
-        model.addAttribute("user", user);
-        model.addAttribute("users", users);
         return TemplateNameConstant.INDEX;
     }
+
+
+    @RequestMapping("/typography")
+    public String typography(Model model) {
+        return TemplateNameConstant.TYPOGRAPHY;
+    }
+
+
+    @RequestMapping("/dropdown-toggle")
+    public String dropdownToggle(Model model) {
+        return TemplateNameConstant.INDEX;
+    }
+
+
+    @RequestMapping("/elements")
+    public String elements(Model model) {
+        return TemplateNameConstant.ELEMENTS;
+    }
+
+
+    @RequestMapping("/buttons")
+    public String buttons(Model model) {
+        return TemplateNameConstant.BUTTONS;
+    }
+
+
+    @RequestMapping("/treeview")
+    public String treeview(Model model) {
+        return TemplateNameConstant.TREEVIEW;
+    }
+
+
+    @RequestMapping("/jquery-ui")
+    public String jqueryUi(Model model) {
+        return TemplateNameConstant.JQUERY_UI;
+    }
+
+
+    @RequestMapping("/nestable-list")
+    public String nestableList(Model model) {
+        return TemplateNameConstant.NESTABLE_LIST;
+    }
+
+
+    @RequestMapping("/tables")
+    public String tables(Model model) {
+        return TemplateNameConstant.TABLES;
+    }
+
+
+    @RequestMapping("/jqgrid")
+    public String jqgrid(Model model) {
+        return TemplateNameConstant.JQGRID;
+    }
+
+    @RequestMapping("/icon-edit")
+    public String iconEdit(Model model) {
+        return TemplateNameConstant.ICON_EDIT;
+    }
+
+    @RequestMapping("/form-elements")
+    public String formElements(Model model) {
+        return TemplateNameConstant.FORM_ELEMENTS;
+    }
+
+    @RequestMapping("/form-wizard")
+    public String formWizard(Model model) {
+        return TemplateNameConstant.FORM_WIZARD;
+    }
+
+    @RequestMapping("/wysiwyg")
+    public String wysiwyg(Model model) {
+        return TemplateNameConstant.WYSIWYG;
+    }
+
+    @RequestMapping("/dropzone")
+    public String dropzone(Model model) {
+        return TemplateNameConstant.DROPZONE;
+    }
+
+    @RequestMapping("/widgets")
+    public String widgets(Model model) {
+        return TemplateNameConstant.WIDGETS;
+    }
+
+    @RequestMapping("/calendar")
+    public String calendar(Model model) {
+        return TemplateNameConstant.CALENDAR;
+    }
+
+    @RequestMapping("/gallery")
+    public String gallery(Model model) {
+        return TemplateNameConstant.GALLERY;
+    }
+
+    @RequestMapping("/profile")
+    public String profile(Model model) {
+        return TemplateNameConstant.PROFILE;
+    }
+
+    @RequestMapping("/inbox")
+    public String inbox(Model model) {
+        return TemplateNameConstant.INBOX;
+    }
+
+    @RequestMapping("/pricing")
+    public String pricing(Model model) {
+        return TemplateNameConstant.PRICING;
+    }
+
+    @RequestMapping("/timeline")
+    public String timeline(Model model) {
+        return TemplateNameConstant.TIMELINE;
+    }
+
+    @RequestMapping("/login")
+    public String login(Model model) {
+        return TemplateNameConstant.LOGIN;
+    }
+
+    @RequestMapping("/error/404")
+    public String error_404(Model model) {
+        return TemplateNameConstant.ERROR_404;
+    }
+
+    @RequestMapping("/error/500")
+    public String error_500(Model model) {
+        return TemplateNameConstant.ERROR_500;
+    }
+
+    @RequestMapping("/faq")
+    public String faq(Model model) {
+        return TemplateNameConstant.FAQ;
+    }
+
+
+
+
 
 }

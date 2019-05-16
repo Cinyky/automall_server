@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.MongoDbFactory;
 
 
 @Configuration
-public class MongoConf {
+public class MongoConfig {
     @Autowired
     private MongoDbFactory mongoDbFactory;
     @Autowired
