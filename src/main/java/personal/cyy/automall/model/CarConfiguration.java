@@ -9,7 +9,7 @@ import lombok.Data;
  * @Date 17:38 2019-05-10
  */
 @Data
-public class CarConfiguration {
+public class CarConfiguration extends AbstractModel {
     /**
      * 商品ID
      */

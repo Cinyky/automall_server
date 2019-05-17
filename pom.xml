@@ -23,6 +23,7 @@
         <fastjson.version>1.2.16</fastjson.version>
         <mybatis.version>1.2.0</mybatis.version>
         <thymeleaf.layout.version>2.0.2</thymeleaf.layout.version>
+        <guava.version>27.1-jre</guava.version>
     </properties>
 
     <dependencies>
@@ -84,6 +85,12 @@
         </dependency>
 
 
+        <!-- spring data jpa -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
 
         <!--添加fastjson解析JSON数据-->
         <dependency>
@@ -104,6 +111,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
+        <!-- guava https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
     </dependencies>

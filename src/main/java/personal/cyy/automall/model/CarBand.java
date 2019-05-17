@@ -12,6 +12,6 @@ import lombok.Data;
 
 @Deprecated
 @Data
-public class CarBand {
+public class CarBand extends AbstractModel {
 
 }

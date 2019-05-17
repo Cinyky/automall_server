@@ -12,5 +12,5 @@ import lombok.Data;
 
 @Deprecated
 @Data
-public class CarMark {
+public class CarMark extends AbstractModel {
 }

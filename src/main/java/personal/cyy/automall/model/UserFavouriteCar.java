@@ -10,7 +10,7 @@ import lombok.Data;
  */
 
 @Data
-public class UserFavouriteCar {
+public class UserFavouriteCar extends AbstractModel {
 
     /**
      * 收藏ID

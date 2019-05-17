@@ -1,9 +1,9 @@
 package personal.cyy.automall.model.tmp;
 
-import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import personal.cyy.automall.model.AbstractModel;
 
 /**
  * 结果返回
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JSONResult {
+public class JSONResult extends AbstractModel {
     /**
      * 错误码
      */
@@ -35,8 +35,5 @@ public class JSONResult {
         return new JSONResult(code, content, url);
     }
 
-    public String toJson() {
-        return JSON.toJSONString(this);
-    }
 
 }

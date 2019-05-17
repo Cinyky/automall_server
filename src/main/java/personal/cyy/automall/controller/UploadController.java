@@ -1,19 +1,16 @@
 package personal.cyy.automall.controller;
 
-import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import personal.cyy.automall.constant.TemplateNameConstant;
 import personal.cyy.automall.model.tmp.JSONResult;
-import personal.cyy.automall.model.tmp.UploadFile;
+import personal.cyy.automall.service.inter.IFileService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -24,8 +21,9 @@ import java.util.UUID;
 @Controller
 public class UploadController extends IController {
 
+
     @Autowired
-    private MongoTemplate mongoTemplate;
+    private IFileService fileService;
 
     /**
      * 查询用户列表方法
@@ -40,28 +38,7 @@ public class UploadController extends IController {
 
     @PostMapping(value = "/file/uploadImage")
     public String uploadImage(@RequestParam(value = "image") MultipartFile file, Model model) {
-        JSONResult jsonResult;
-        if (file.isEmpty()) {
-            jsonResult = JSONResult.build(200, "请选择一张图片", null);
-        } else {
-            // 返回的 JSON 对象，这种类可自己封装
-            String fileName = file.getOriginalFilename();
-            try {
-                UploadFile uploadFile = new UploadFile();
-                uploadFile.setName(fileName);
-                uploadFile.setCreatedTime(new Date());
-                uploadFile.setContent(new Binary(file.getBytes()));
-                uploadFile.setContentType(file.getContentType());
-                uploadFile.setSize(file.getSize());
-
-                UploadFile savedFile = mongoTemplate.save(uploadFile);
-                String url = savedFile.getId();
-                jsonResult = JSONResult.build(200, "图片上传成功", url);
-            } catch (Exception e) {
-                e.printStackTrace();
-                jsonResult = JSONResult.build(500, "图片上传失败", null);
-            }
-        }
+        JSONResult jsonResult = fileService.saveFormFile(file);
         model.addAttribute("jsonResult", jsonResult);
         return TemplateNameConstant.RESULT;
 

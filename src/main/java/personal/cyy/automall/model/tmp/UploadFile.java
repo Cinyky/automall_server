@@ -4,6 +4,7 @@ import lombok.Data;
 import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import personal.cyy.automall.model.AbstractModel;
 
 import java.util.Date;
 
@@ -17,7 +18,7 @@ import java.util.Date;
 
 @Data
 @Document
-public class UploadFile {
+public class UploadFile extends AbstractModel {
 
     /**
      * 图片ID

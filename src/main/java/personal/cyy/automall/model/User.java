@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class User {
+public class User extends AbstractModel {
     /**
      * 商品ID
      */
