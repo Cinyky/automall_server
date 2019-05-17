@@ -2,8 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!--通用CSS-->
-<head th:replace="common/common_head :: common_head(~{::title})">
+<head th:replace="common/common_head :: common_head(~{::title}, ~{::link})">
     <title>404错误页面</title>
+    <link rel="stylesheet" th:href="@{/static/assets/css/ui.jqgrid.css}"/>
 </head>
 
 <body>

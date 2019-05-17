@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 
-<head th:fragment="common_head(title)">
+<head th:fragment="common_head(title,links)">
 
     <!-- Common styles and scripts -->
     <meta charset="utf-8"/>
@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!-- basic styles -->
+
 
     <link th:href="@{/static/assets/css/bootstrap.min.css}" rel="stylesheet"/>
 
@@ -30,6 +31,16 @@
     <!-- page specific plugin styles -->
 
 
+    <link rel="stylesheet" th:href="@{/static/assets/css/jquery-ui-1.10.3.full.min.css}"/>
+
+    <link rel="stylesheet" th:href="@{/static/assets/css/datepicker.css}"/>
+
+    <link rel="stylesheet" th:href="@{/static/assets/css/ui.jqgrid.css}"/>
+
+
+    <!-- fonts -->
+
+
     <!-- ace styles -->
 
 
@@ -41,9 +52,7 @@
 
 
     <!--[if lte IE 8]>
-
     <link rel="stylesheet" th:href="@{/static/assets/css/ace-ie.min.css}"/>
-
     <![endif]-->
 
 
@@ -67,8 +76,9 @@
 
     <![endif]-->
 
+    <!-- page specific plugin styles -->
     <!--/* Per-page placeholder for additional links */-->
-    <!--<th:block th:if="${links}  != null " th:replace="${links}" />-->
+    <th:block th:if="${links}  != null " th:replace="${links}"/>
 
 
 </head>
