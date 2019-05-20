@@ -168,22 +168,73 @@
 
                                             </th>
 
-                                            <th>Domain</th>
+                                            <th>商品名称</th>
 
-                                            <th>Price</th>
+                                            <th>商品描述</th>
 
-                                            <th class="hidden-480">Clicks</th>
+                                            <th>品牌</th>
+
+                                            <th>型号</th>
+
+                                            <th>配置</th>
+
+                                            <th>
+
+                                                <i class="icon-time bigger-110 hidden-480"></i>
+
+                                                上牌时间
+
+                                            </th>
 
 
                                             <th>
 
                                                 <i class="icon-time bigger-110 hidden-480"></i>
 
-                                                Update
+                                                保险时间
 
                                             </th>
 
-                                            <th class="hidden-480">Status</th>
+
+                                            <th>
+
+                                                <i class="icon-time bigger-110 hidden-480"></i>
+
+                                                验车时间
+
+                                            </th>
+
+                                            <th>过户次数</th>
+                                            <th>汽车排量</th>
+                                            <th>行驶里程</th>
+                                            <th>价格</th>
+                                            <th>汽车排放标准</th>
+                                            <th>车身颜色</th>
+                                            <th>手动自动</th>
+
+                                            <th class="hidden-480">状态</th>
+
+                                            <th>
+
+                                                <i class="icon-time bigger-110 hidden-480"></i>
+
+                                                创建时间
+
+                                            </th>
+
+                                            <th>
+
+                                                <i class="icon-time bigger-110 hidden-480"></i>
+
+                                                更新时间
+
+                                            </th>
+
+                                            <th>
+
+                                                图片
+
+                                            </th>
 
 
                                             <th></th>
@@ -194,9 +245,10 @@
 
 
                                         <tbody>
+                                        <!--内容-->
+                                        <tr th:each="car : ${cars}">
 
-                                        <tr>
-
+                                            <!--第一列-->
                                             <td class="center">
 
                                                 <label>
@@ -208,28 +260,67 @@
                                                 </label>
 
                                             </td>
+                                            <!--商品名称-->
+                                            <td th:text="${car.title}"/>
 
+                                            <!--商品描述-->
+                                            <td th:text="${car.description}"/>
 
+                                            <!--品牌-->
+                                            <td th:text="${car.band}"/>
+
+                                            <!--型号-->
+                                            <td th:text="${car.mark}"/>
+
+                                            <!--配置-->
+                                            <td th:text="${car.config}"/>
+
+                                            <!--上牌时间-->
+                                            <td th:text="${car.regTime}"/>
+
+                                            <!--保险时间-->
+                                            <td th:text="${car.insuranceTime}"/>
+
+                                            <!--验车时间-->
+                                            <td th:text="${car.checkTime}"/>
+
+                                            <!--过户次数-->
+                                            <td th:text="${car.transferNum}"/>
+
+                                            <!--汽车排量-->
+                                            <td th:text="${car.outputVolume}"/>
+
+                                            <!--行驶里程-->
+                                            <td th:text="${car.distance}"/>
+
+                                            <!--价格-->
+                                            <td th:text="${car.price}"/>
+
+                                            <!--汽车排放标准-->
+                                            <td th:text="${car.outputStandard}"/>
+
+                                            <!--车身颜色-->
+                                            <td th:text="${car.color}"/>
+
+                                            <!--手动自动-->
+                                            <td th:text="${car.model}"/>
+
+                                            <!--手动自动-->
+                                            <td th:text="${car.model}"/>
+
+                                            <!--创建时间-->
+                                            <td th:text="${car.createTime}"/>
+
+                                            <!--更新时间-->
+                                            <td th:text="${car.updateTime}"/>
+
+                                            <!--商品图片-->
                                             <td>
 
-                                                <a href="#">app.com</a>
-
-                                            </td>
-
-                                            <td>$45</td>
-
-                                            <td class="hidden-480">3,330</td>
-
-                                            <td>Feb 12</td>
-
-
-                                            <td class="hidden-480">
-
-                                                <span class="label label-sm label-warning">Expiring</span>
-
                                             </td>
 
 
+                                            <!--操作-->
                                             <td>
 
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
@@ -327,7 +418,6 @@
                                             </td>
 
                                         </tr>
-
 
                                         </tbody>
 
@@ -457,6 +547,9 @@
     <script th:src="@{/static/assets/js/jquery.dataTables.min.js}"></script>
 
     <script th:src="@{/static/assets/js/jquery.dataTables.bootstrap.js}"></script>
+
+
+    <script th:src="@{/static/assets/js/jquery.colorbox-min.js}"></script>
 
     <!-- inline scripts related to this page -->
     <script th:src="@{/static/assets/js/moudle/goods_list.js}"></script>

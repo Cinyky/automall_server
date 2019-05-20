@@ -42,7 +42,8 @@ public class GoodsController extends IController {
 
     @RequestMapping("/goods/goods_list")
     public String goodsList(Model model) {
-
+        List<Car> cars = goodsService.getAllGoods();
+        model.addAttribute("cars", cars);
         return "goods/goods_list";
     }
 
