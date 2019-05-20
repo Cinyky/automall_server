@@ -36,14 +36,14 @@ public class GoodsController extends IController {
     @GetMapping("/goods/goods_add")
     public String template(Model model) {
         model.addAttribute("car", new Car());
-        return "/goods/goods_add";
+        return "goods/goods_add";
     }
 
 
     @RequestMapping("/goods/goods_list")
     public String goodsList(Model model) {
 
-        return "/goods/goods_list";
+        return "goods/goods_list";
     }
 
 
@@ -51,7 +51,7 @@ public class GoodsController extends IController {
     public String goodsDetail(@PathVariable String carId, Model model) {
         Car car = goodsService.getGoodsById(carId);
 
-        return "/goods/goods_list";
+        return "goods/goods_list";
     }
 
     @PostMapping("/goods/goods_add")

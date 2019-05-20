@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<project name="cok-game"  >
+<project name="mall">
     <target name="copy"  >
-    	<copy file="build/libs/COK-1.1.13-Extension.jar" tofile="../../smartfoxserver/SFS2X/extensions/SHWC/COK-1.1.13-Extension.jar"/>
+        <copy file="target/automall-0.0.1-SNAPSHOT.jar" tofile="/Users/cyy/Documents/automall-0.0.1-SNAPSHOT.jar"/>
     </target>
 </project>
