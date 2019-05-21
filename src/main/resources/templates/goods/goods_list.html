@@ -6,6 +6,8 @@
     <title>商品列表</title>
 
     <link rel="stylesheet" th:href="@{/static/assets/css/ace-skins.min.css}"/>
+
+    <link rel="stylesheet" th:href="@{/static/assets/css/colorbox.css}"/>
 </head>
 
 <body>
@@ -316,7 +318,51 @@
 
                                             <!--商品图片-->
                                             <td>
+                                                <ul class="ace-thumbnails">
 
+                                                    <li th:each="image : ${car.getCarImages()}">
+
+                                                        <!--<a th:href="'/api/file/image/' + ${image.imageId}" title="" data-rel="colorbox">-->
+
+                                                        <img th:width="180" th:height="180" alt="150x150"
+                                                             th:src="'/api/file/image/' + ${image.imageId}"
+                                                             data-rel="colorbox"/>
+
+
+                                                        <div class="tools">
+
+                                                            <a href="#">
+
+                                                                <i class="icon-link"></i>
+
+                                                            </a>
+
+
+                                                            <a href="#">
+
+                                                                <i class="icon-paper-clip"></i>
+
+                                                            </a>
+
+
+                                                            <a href="#">
+
+                                                                <i class="icon-pencil"></i>
+
+                                                            </a>
+
+
+                                                            <a href="#">
+
+                                                                <i class="icon-remove red"></i>
+
+                                                            </a>
+
+                                                        </div>
+
+                                                    </li>
+
+                                                </ul>
                                             </td>
 
 
