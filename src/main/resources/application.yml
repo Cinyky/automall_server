@@ -4,7 +4,7 @@ server:
 
 spring:
   profiles:
-    active: @spring.active@
+    active: ${spring.active}
   application:
     name: auto-mall
   http:
@@ -47,12 +47,7 @@ spring:
     configuration:
       mapUnderscoreToCamelCase: true
     # mybatis end
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: fileDB
-      uri: mongodb://127.0.0.1:27017/fileDB
+
   mvc:
     static-path-pattern: /static/**
 
@@ -100,8 +95,16 @@ management:
 
 ---
 #dev
+
 spring:
-  profiles: local
+  profiles: dev
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fileDB
+      uri: mongodb://localhost:27017/fileDB
   # 数据源配置相关
   datasource:
     #简略版datasource
@@ -136,7 +139,13 @@ spring:
 ---
 #produce
 spring:
-  profiles: produce
+  profiles: pro
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fileDB
+      uri: mongodb://localhost:27017/fileDB
   # 数据源配置相关
   datasource:
     #简略版datasource

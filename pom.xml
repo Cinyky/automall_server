@@ -24,6 +24,7 @@
         <mybatis.version>1.2.0</mybatis.version>
         <thymeleaf.layout.version>2.0.2</thymeleaf.layout.version>
         <guava.version>27.1-jre</guava.version>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
@@ -128,7 +129,22 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <!-- 配置资源文件中的变量分隔符（标识符），这里配置了两种变量分隔符 -->
+                    <delimiters>
+                        <delimiter>${*}</delimiter> <!-- 以${}为分隔符，例如 ${jdbc.url}  -->
+                        <delimiter>@</delimiter>    <!-- 以@为分隔符，例如 @jdbc.url@ -->
+                    </delimiters>
+                </configuration>
+
+            </plugin>
+
         </plugins>
+
+        <finalName>mall</finalName>
     </build>
 
     <profiles>
@@ -138,12 +154,15 @@
             <properties>
                 <spring.active>dev</spring.active>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
 
         <profile>
-            <id>produce</id>
+            <id>pro</id>
             <properties>
-                <spring.active>produce</spring.active>
+                <spring.active>pro</spring.active>
             </properties>
         </profile>
     </profiles>
