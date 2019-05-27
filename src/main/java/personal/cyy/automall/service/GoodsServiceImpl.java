@@ -27,15 +27,22 @@ public class GoodsServiceImpl implements IGoodsService {
 
 
     private GoodsServiceImpl() {
-        id2CarMap = new ConcurrentHashMap<>();
+
     }
 
+    private void checkNull() {
+        if (id2CarMap == null) {
+            id2CarMap = new ConcurrentHashMap<>();
+        }
+    }
 
     private void putIntoCache(Car car) {
+        checkNull();
         id2CarMap.put(car.getId(), car);
     }
 
     private Car getFromCache(String carId) {
+        checkNull();
         if (id2CarMap.containsKey(carId)) {
             return id2CarMap.get(carId);
         }
