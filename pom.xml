@@ -143,8 +143,6 @@
             </plugin>
 
         </plugins>
-
-        <finalName>mall</finalName>
     </build>
 
     <profiles>
