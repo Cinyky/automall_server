@@ -2,7 +2,7 @@ package personal.cyy.automall.service.inter;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import personal.cyy.automall.model.tmp.JSONResult;
+import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.model.tmp.UploadFile;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public interface IFileService {
      *
      * @param file
      */
-    JSONResult saveFormFile(MultipartFile file);
+    CommonResult saveFormFile(MultipartFile file);
 
     /**
      * 获取文件

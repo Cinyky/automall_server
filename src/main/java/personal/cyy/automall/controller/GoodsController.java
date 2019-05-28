@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
+import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.constant.TemplateNameConstant;
 import personal.cyy.automall.model.Car;
 import personal.cyy.automall.model.CarImage;
-import personal.cyy.automall.model.tmp.JSONResult;
 import personal.cyy.automall.service.FileServiceImpl;
 import personal.cyy.automall.service.GoodsServiceImpl;
 import personal.cyy.automall.utils.CommonUtils;
@@ -64,8 +64,8 @@ public class GoodsController extends IController {
         car.setId(CommonUtils.getGUID());
         List<CarImage> images = new ArrayList<>();
         for (MultipartFile file : files) {
-            JSONResult jsonResult = fileService.saveFormFile(file);
-            String imageId = jsonResult.getUrl();
+            CommonResult commonResult = fileService.saveFormFile(file);
+            String imageId = (String) commonResult.getData();
             if (StringUtils.isEmpty(imageId)) {
                 continue;
             }
@@ -78,8 +78,8 @@ public class GoodsController extends IController {
         car.setCarImages(images);
         car.setCreateTime(System.currentTimeMillis());
         car.setUpdateTime(System.currentTimeMillis());
-        JSONResult jsonResult = goodsService.addNewCar(car);
-        model.addAttribute("jsonResult", jsonResult);
+        CommonResult commonResult = goodsService.addNewCar(car);
+        model.addAttribute("jsonResult", commonResult);
         return TemplateNameConstant.RESULT;
     }
 

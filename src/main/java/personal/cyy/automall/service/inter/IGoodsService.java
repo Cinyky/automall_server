@@ -1,8 +1,8 @@
 package personal.cyy.automall.service.inter;
 
 import org.springframework.stereotype.Service;
+import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.model.Car;
-import personal.cyy.automall.model.tmp.JSONResult;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public interface IGoodsService {
      *
      * @param car
      */
-    JSONResult addNewCar(Car car);
+    CommonResult addNewCar(Car car);
 
     /**
      * 根据goodsId 获取对应的商品

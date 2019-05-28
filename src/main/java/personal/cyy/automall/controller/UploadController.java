@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.constant.TemplateNameConstant;
-import personal.cyy.automall.model.tmp.JSONResult;
 import personal.cyy.automall.service.inter.IFileService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +38,8 @@ public class UploadController extends IController {
 
     @PostMapping(value = "/file/uploadImage")
     public String uploadImage(@RequestParam(value = "image") MultipartFile file, Model model) {
-        JSONResult jsonResult = fileService.saveFormFile(file);
-        model.addAttribute("jsonResult", jsonResult);
+        CommonResult commonResult = fileService.saveFormFile(file);
+        model.addAttribute("jsonResult", commonResult);
         return TemplateNameConstant.RESULT;
 
     }

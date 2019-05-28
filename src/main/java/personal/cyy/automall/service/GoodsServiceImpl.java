@@ -2,9 +2,9 @@ package personal.cyy.automall.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.jpa.CarJPA;
 import personal.cyy.automall.model.Car;
-import personal.cyy.automall.model.tmp.JSONResult;
 import personal.cyy.automall.service.inter.IGoodsService;
 
 import java.util.List;
@@ -56,13 +56,13 @@ public class GoodsServiceImpl implements IGoodsService {
      * @param car
      */
     @Override
-    public JSONResult addNewCar(Car car) {
-        JSONResult jsonResult = null;
+    public CommonResult addNewCar(Car car) {
+        CommonResult commonResult = null;
         if (car == null) {
-            return jsonResult;
+            return commonResult;
         }
         carJPA.save(car);
-        return JSONResult.build(200, "添加成功", car.getId());
+        return CommonResult.success(car.getId(), "添加成功");
     }
 
     @Override

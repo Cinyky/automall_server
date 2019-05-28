@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import personal.cyy.automall.model.tmp.JSONResult;
+import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.model.tmp.UploadFile;
 import personal.cyy.automall.service.inter.IFileService;
 
@@ -64,10 +64,10 @@ public class FileServiceImpl implements IFileService {
      * @param file
      */
     @Override
-    public JSONResult saveFormFile(MultipartFile file) {
-        JSONResult jsonResult;
+    public CommonResult saveFormFile(MultipartFile file) {
+        CommonResult commonResult;
         if (file.isEmpty()) {
-            jsonResult = JSONResult.build(200, "请选择一张图片", null);
+            commonResult = CommonResult.failed("请选择一张照片");
         } else {
             // 返回的 JSON 对象，这种类可自己封装
             String fileName = file.getOriginalFilename();
@@ -81,13 +81,13 @@ public class FileServiceImpl implements IFileService {
 
                 UploadFile savedFile = saveFile(uploadFile);
                 String url = savedFile.getId();
-                jsonResult = JSONResult.build(200, "图片上传成功", url);
+                commonResult = CommonResult.success(url, "图片上传成功");
             } catch (Exception e) {
                 e.printStackTrace();
-                jsonResult = JSONResult.build(500, "图片上传失败", null);
+                commonResult = CommonResult.failed("图片上传失败");
             }
         }
-        return jsonResult;
+        return commonResult;
     }
 
     /**
