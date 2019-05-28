@@ -135,7 +135,7 @@ public class Car extends AbstractModel implements Serializable {
     @Column(name = "update_time")
     private long updateTime;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
     private List<CarImage> carImages;
 

@@ -103,6 +103,24 @@ jQuery(function ($) {
     $("#cboxLoadingGraphic").append("<i class='icon-spinner orange'></i>");//let's add a custom loading icon
 
 
+});
+
+deleteGoods = function (goodsId) {
+    $.ajax({
+        type: "post",
+        url: '/goods/delete/' + goodsId,
+        data: goodsId,
+        dataType: 'json',
+        contentType: 'application/json;charset=UTF-8',
+        success: function (result) {
+            console.log(result);
+            if (result.code == 200) {
+                let data = "#" + result.data;
+                $(data).remove();
+            }
+            alert(result.message);
 
 
-})
+        }
+    });
+}

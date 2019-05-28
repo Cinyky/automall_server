@@ -248,7 +248,7 @@
 
                                         <tbody>
                                         <!--内容-->
-                                        <tr th:each="car : ${cars}">
+                                        <tr th:each="car : ${cars}" th:id="${car.id}">
 
                                             <!--第一列-->
                                             <td class="center">
@@ -385,7 +385,8 @@
                                                     </a>
 
 
-                                                    <a class="red" href="#">
+                                                    <a class="red" href="javascript:void(0)" th:data-id="${car.id}"
+                                                       th:onclick="deleteGoods(this.getAttribute('data-id'))">
 
                                                         <i class="icon-trash bigger-130"></i>
 

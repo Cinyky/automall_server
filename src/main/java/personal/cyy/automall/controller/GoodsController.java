@@ -15,6 +15,7 @@ import personal.cyy.automall.service.GoodsServiceImpl;
 import personal.cyy.automall.utils.CommonUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -33,28 +34,26 @@ public class GoodsController extends IController {
     @Autowired
     FileServiceImpl fileService;
 
+    /**
+     * get 进入添加商品页面
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/goods/goods_add")
     public String template(Model model) {
         model.addAttribute("car", new Car());
         return "goods/goods_add";
     }
 
-
-    @RequestMapping("/goods/goods_list")
-    public String goodsList(Model model) {
-        List<Car> cars = goodsService.getAllGoods();
-        model.addAttribute("cars", cars);
-        return "goods/goods_list";
-    }
-
-
-    @RequestMapping("/goods/goods_detail/{carId}")
-    public String goodsDetail(@PathVariable String carId, Model model) {
-        Car car = goodsService.getGoodsById(carId);
-
-        return "goods/goods_list";
-    }
-
+    /**
+     * 增加商品
+     *
+     * @param car
+     * @param files
+     * @param model
+     * @return
+     */
     @PostMapping("/goods/goods_add")
     @ResponseBody
     public String goodsAdd(@ModelAttribute Car car, @RequestParam(value = "images") MultipartFile[] files, Model model
@@ -82,6 +81,39 @@ public class GoodsController extends IController {
         model.addAttribute("jsonResult", commonResult);
         return TemplateNameConstant.RESULT;
     }
+
+    /**
+     * 商品列表
+     * @param model
+     * @return
+     */
+    @RequestMapping("/goods/goods_list")
+    public String goodsList(Model model) {
+        Collection<Car> cars = goodsService.getAllGoods();
+        model.addAttribute("cars", cars);
+        return "goods/goods_list";
+    }
+
+    @RequestMapping("/goods/delete/{carId}")
+    @ResponseBody
+    public CommonResult delete(@PathVariable String carId) {
+        goodsService.deleteGoods(carId);
+        return CommonResult.success(carId);
+    }
+
+    /**
+     * 获取制定ID 的商品
+     * @param carId
+     * @param model
+     * @return
+     */
+    @RequestMapping("/goods/goods_detail/{carId}")
+    public String goodsDetail(@PathVariable String carId, Model model) {
+        Car car = goodsService.getGoodsById(carId);
+        model.addAttribute("car", car);
+        return "goods/goods_list";
+    }
+
 
 
 }

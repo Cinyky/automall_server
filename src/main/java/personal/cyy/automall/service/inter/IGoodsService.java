@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.model.Car;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @Author Cinyky
@@ -31,5 +31,12 @@ public interface IGoodsService {
     /**
      * @return
      */
-    List<Car> getAllGoods();
+    Collection<Car> getAllGoods();
+
+    /**
+     * 删除
+     *
+     * @param goodsId
+     */
+    void deleteGoods(String goodsId);
 }

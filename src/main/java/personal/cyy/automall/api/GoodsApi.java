@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import personal.cyy.automall.model.Car;
 import personal.cyy.automall.service.GoodsServiceImpl;
 
-import java.util.List;
+import java.util.Collection;
 
 
 /**
@@ -32,7 +32,7 @@ public class GoodsApi extends IApi {
     @GetMapping(value = "/list")
     @ResponseBody
     public String getGoodsList() {
-        List<Car> allGoods = goodsService.getAllGoods();
+        Collection<Car> allGoods = goodsService.getAllGoods();
         return JSONObject.toJSONString(allGoods);
     }
 

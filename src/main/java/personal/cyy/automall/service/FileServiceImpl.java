@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.model.tmp.UploadFile;
 import personal.cyy.automall.service.inter.IFileService;
+import personal.cyy.automall.service.inter.IService;
 
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 @Service
-public class FileServiceImpl implements IFileService {
+public class FileServiceImpl implements IFileService, IService {
 
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -130,5 +131,15 @@ public class FileServiceImpl implements IFileService {
     @Override
     public List<String> getFileUrls(String carId) {
         return car2FileMap.get(carId);
+    }
+
+    @Override
+    public void init() {
+        List<UploadFile> uploadFiles = mongoTemplate.findAll(UploadFile.class);
+        uploadFiles.stream().forEach(
+                uploadFile -> {
+                    putIntoCache(uploadFile);
+                }
+        );
     }
 }

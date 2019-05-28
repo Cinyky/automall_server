@@ -6,7 +6,9 @@ import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.jpa.CarJPA;
 import personal.cyy.automall.model.Car;
 import personal.cyy.automall.service.inter.IGoodsService;
+import personal.cyy.automall.service.inter.IService;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 @Service
-public class GoodsServiceImpl implements IGoodsService {
+public class GoodsServiceImpl implements IGoodsService, IService {
 
     @Autowired
     private CarJPA carJPA;
@@ -62,6 +64,7 @@ public class GoodsServiceImpl implements IGoodsService {
             return commonResult;
         }
         carJPA.save(car);
+        putIntoCache(car);
         return CommonResult.success(car.getId(), "添加成功");
     }
 
@@ -80,14 +83,30 @@ public class GoodsServiceImpl implements IGoodsService {
     }
 
     @Override
-    public List<Car> getAllGoods() {
+    public Collection<Car> getAllGoods() {
+        return id2CarMap.values();
+    }
+
+    /**
+     * 删除
+     *
+     * @param goodsId
+     */
+    @Override
+    public void deleteGoods(String goodsId) {
+        Car car = getGoodsById(goodsId);
+        if (car != null) {
+            carJPA.deleteById(goodsId);
+        }
+    }
+
+    @Override
+    public void init() {
         List<Car> allCars = carJPA.findAll();
         allCars.stream().forEach(
                 car -> {
                     putIntoCache(car);
                 }
         );
-
-        return allCars;
     }
 }
