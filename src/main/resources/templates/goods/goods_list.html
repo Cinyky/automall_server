@@ -251,7 +251,9 @@
 
                                             </td>
                                             <!--商品名称-->
-                                            <td th:text="${car.title}"/>
+                                            <td>
+                                                <a th:href="|/goods/detail/${car.id}|" th:text="${car.title}"></a>
+                                            </td>
 
                                             <!--商品描述-->
                                             <td th:text="${car.description}"/>

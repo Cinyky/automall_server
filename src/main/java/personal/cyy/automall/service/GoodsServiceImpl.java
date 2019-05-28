@@ -29,26 +29,33 @@ public class GoodsServiceImpl implements IGoodsService, IService {
 
 
     private GoodsServiceImpl() {
-
+        id2CarMap = new ConcurrentHashMap<>();
     }
 
-    private void checkNull() {
-        if (id2CarMap == null) {
-            id2CarMap = new ConcurrentHashMap<>();
-        }
-    }
+//    private void checkNull() {
+//        if (id2CarMap == null) {
+//            id2CarMap = new ConcurrentHashMap<>();
+//        }
+//    }
 
     private void putIntoCache(Car car) {
-        checkNull();
+//        checkNull();
         id2CarMap.put(car.getId(), car);
     }
 
     private Car getFromCache(String carId) {
-        checkNull();
+//        checkNull();
         if (id2CarMap.containsKey(carId)) {
             return id2CarMap.get(carId);
         }
         return null;
+    }
+
+    private void removeFromCache(String carId) {
+//        checkNull();
+        if (id2CarMap.containsKey(carId)) {
+            id2CarMap.remove(carId);
+        }
     }
 
 
@@ -96,8 +103,11 @@ public class GoodsServiceImpl implements IGoodsService, IService {
     public void deleteGoods(String goodsId) {
         Car car = getGoodsById(goodsId);
         if (car != null) {
+
             carJPA.deleteById(goodsId);
+            removeFromCache(goodsId);
         }
+
     }
 
     @Override

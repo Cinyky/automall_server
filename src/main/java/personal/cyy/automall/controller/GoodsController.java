@@ -98,6 +98,7 @@ public class GoodsController extends IController {
     @ResponseBody
     public CommonResult delete(@PathVariable String carId) {
         goodsService.deleteGoods(carId);
+        fileService.delete(carId);
         return CommonResult.success(carId);
     }
 
@@ -107,11 +108,11 @@ public class GoodsController extends IController {
      * @param model
      * @return
      */
-    @RequestMapping("/goods/goods_detail/{carId}")
+    @RequestMapping("/goods/detail/{carId}")
     public String goodsDetail(@PathVariable String carId, Model model) {
         Car car = goodsService.getGoodsById(carId);
         model.addAttribute("car", car);
-        return "goods/goods_list";
+        return "goods/goods_detail";
     }
 
 

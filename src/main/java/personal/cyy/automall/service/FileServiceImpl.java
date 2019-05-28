@@ -4,6 +4,8 @@ import com.google.common.collect.ArrayListMultimap;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import personal.cyy.automall.common.CommonResult;
@@ -45,6 +47,13 @@ public class FileServiceImpl implements IFileService, IService {
             return id2FileMap.get(fileId);
         }
         return null;
+    }
+
+    private void removeFromCache(String fileId) {
+        if (id2FileMap.containsKey(fileId)) {
+            id2FileMap.remove(fileId);
+        }
+
     }
 
     /**
@@ -131,6 +140,19 @@ public class FileServiceImpl implements IFileService, IService {
     @Override
     public List<String> getFileUrls(String carId) {
         return car2FileMap.get(carId);
+    }
+
+    /**
+     * 删除所有的图片
+     *
+     * @param carId
+     */
+    @Override
+    public void delete(String carId) {
+        List<String> fileUrls = getFileUrls(carId);
+        fileUrls.stream().forEach(
+                fileUrl -> mongoTemplate.findAndRemove(Query.query(Criteria.where("id").is(fileUrl)), UploadFile.class)
+        );
     }
 
     @Override

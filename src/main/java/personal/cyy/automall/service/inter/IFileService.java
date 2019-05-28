@@ -51,4 +51,11 @@ public interface IFileService {
      * @return
      */
     List<String> getFileUrls(String carId);
+
+    /**
+     * 删除所有的图片
+     *
+     * @param carId
+     */
+    void delete(String carId);
 }
