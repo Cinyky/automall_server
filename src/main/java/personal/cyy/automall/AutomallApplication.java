@@ -17,9 +17,10 @@ public class AutomallApplication {
         Collection<IService> iServices = SpingApplicationContext.getApplicationContext().getBeansOfType(IService.class).values();
         iServices.stream().forEach(iService ->
                 {
+                    long beginTimeMillis = System.currentTimeMillis();
                     GameLog.SYS.info("serive {} init start ...", iService.getClass().getSimpleName());
                     iService.init();
-                    GameLog.SYS.info("serive {} init sucess", iService.getClass().getSimpleName());
+                    GameLog.SYS.info("serive {} init sucess spend time {} ms", iService.getClass().getSimpleName(), System.currentTimeMillis() - beginTimeMillis);
                 }
         );
         GameLog.SYS.info("auto mall sunccess!");
