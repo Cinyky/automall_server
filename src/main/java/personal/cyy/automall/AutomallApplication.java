@@ -2,6 +2,7 @@ package personal.cyy.automall;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import personal.cyy.automall.component.SpingApplicationContext;
 import personal.cyy.automall.log.GameLog;
 import personal.cyy.automall.service.inter.IService;
@@ -9,6 +10,7 @@ import personal.cyy.automall.service.inter.IService;
 import java.util.Collection;
 
 @SpringBootApplication
+@EnableWebSecurity // 启用 web 安全
 public class AutomallApplication {
 
     public static void main(String[] args) {
