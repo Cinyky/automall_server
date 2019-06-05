@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>压缩图片demo</title>
+</head>
+<body>
+	<img id="img" src="">
+	<input id="file" type="file" onchange="compress()">
+</body>
+<script>
+
+// 对图片进行压缩
+function compress() { 
+    let fileObj = document.getElementById('file').files[0] //上传文件的对象
+    let reader = new FileReader()
+    reader.readAsDataURL(fileObj)
+    reader.onload = function(e) {
+        let image = new Image() //新建一个img标签（还没嵌入DOM节点)
+        image.src = e.target.result
+        image.onload = function() {
+            let canvas = document.createElement('canvas'), 
+            context = canvas.getContext('2d'),
+            // imageWidth = image.width / 2,    //压缩后图片的大小
+            // imageHeight = image.height / 2,
+            imageWidth = image.width,    //压缩后图片的大小
+            imageHeight = image.height,
+            data = ''
+
+            canvas.width = imageWidth
+            canvas.height = imageHeight
+
+            context.drawImage(image, 0, 0, imageWidth, imageHeight)
+            data = canvas.toDataURL('image/jpeg')
+
+            //压缩完成 
+            document.getElementById('img').src = data
+        }
+    }
+}
+</script>
+</html>
