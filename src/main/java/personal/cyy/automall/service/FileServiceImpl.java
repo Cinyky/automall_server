@@ -1,6 +1,7 @@
 package personal.cyy.automall.service;
 
 import com.google.common.collect.ArrayListMultimap;
+import net.coobird.thumbnailator.Thumbnails;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,6 +14,9 @@ import personal.cyy.automall.model.tmp.UploadFile;
 import personal.cyy.automall.service.inter.IFileService;
 import personal.cyy.automall.service.inter.IService;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -79,15 +83,19 @@ public class FileServiceImpl implements IFileService, IService {
         if (file.isEmpty()) {
             commonResult = CommonResult.failed("请选择一张照片");
         } else {
-            // 返回的 JSON 对象，这种类可自己封装
-            String fileName = file.getOriginalFilename();
             try {
+                BufferedImage bufferedImage = Thumbnails.of(file.getInputStream()).scale(1F).asBufferedImage();
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                //png 为要保存的图片格式
+                ImageIO.write(bufferedImage, "png", out);
+                // 返回的 JSON 对象，这种类可自己封装
+                String fileName = file.getOriginalFilename();
                 UploadFile uploadFile = new UploadFile();
                 uploadFile.setName(fileName);
                 uploadFile.setCreatedTime(new Date());
-                uploadFile.setContent(new Binary(file.getBytes()));
+                uploadFile.setContent(new Binary(out.toByteArray()));
                 uploadFile.setContentType(file.getContentType());
-                uploadFile.setSize(file.getSize());
+                uploadFile.setSize(out.toByteArray().length);
 
                 UploadFile savedFile = saveFile(uploadFile);
                 String url = savedFile.getId();
