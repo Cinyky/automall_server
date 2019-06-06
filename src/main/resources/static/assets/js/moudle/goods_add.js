@@ -136,6 +136,7 @@ jQuery(function ($) {
 
     }
 
+    /*
     $('#transferNum').ace_spinner({
         value: 0,
         min: 0,
@@ -192,6 +193,7 @@ jQuery(function ($) {
             //alert(this.value)
 
         });
+     */
 
 
 });
