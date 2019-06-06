@@ -84,7 +84,7 @@ public class FileServiceImpl implements IFileService, IService {
             commonResult = CommonResult.failed("请选择一张照片");
         } else {
             try {
-                BufferedImage bufferedImage = Thumbnails.of(file.getInputStream()).scale(0.3F).outputQuality(0.3F).asBufferedImage();
+                BufferedImage bufferedImage = Thumbnails.of(file.getInputStream()).scale(0.2F).outputQuality(0.1F).asBufferedImage();
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 //png 为要保存的图片格式
                 ImageIO.write(bufferedImage, "png", out);
@@ -159,7 +159,11 @@ public class FileServiceImpl implements IFileService, IService {
     public void delete(String carId) {
         List<String> fileUrls = getFileUrls(carId);
         fileUrls.stream().forEach(
-                fileUrl -> mongoTemplate.findAndRemove(Query.query(Criteria.where("id").is(fileUrl)), UploadFile.class)
+                fileId -> {
+                    removeFromCache(fileId);
+                    mongoTemplate.findAndRemove(Query.query(Criteria.where("id").is(fileId)), UploadFile.class);
+
+                }
         );
     }
 
