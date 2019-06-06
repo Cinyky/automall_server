@@ -84,7 +84,7 @@ public class FileServiceImpl implements IFileService, IService {
             commonResult = CommonResult.failed("请选择一张照片");
         } else {
             try {
-                BufferedImage bufferedImage = Thumbnails.of(file.getInputStream()).scale(1F).asBufferedImage();
+                BufferedImage bufferedImage = Thumbnails.of(file.getInputStream()).scale(0.3F).asBufferedImage();
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 //png 为要保存的图片格式
                 ImageIO.write(bufferedImage, "png", out);
