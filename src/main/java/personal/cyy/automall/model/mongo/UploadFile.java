@@ -1,4 +1,4 @@
-package personal.cyy.automall.model.tmp;
+package personal.cyy.automall.model.mongo;
 
 import lombok.Data;
 import org.bson.types.Binary;

@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import personal.cyy.automall.common.CommonResult;
-import personal.cyy.automall.model.tmp.UploadFile;
+import personal.cyy.automall.model.mongo.UploadFile;
 import personal.cyy.automall.service.inter.IFileService;
 import personal.cyy.automall.service.inter.IService;
 
