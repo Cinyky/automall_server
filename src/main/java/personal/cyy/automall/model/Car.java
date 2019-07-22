@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 商品列表
+ * 商品信息
  *
  * @Author Cinyky
  * @Date 13:39 2019-05-10

@@ -1,3 +1,4 @@
+-- 车
 CREATE TABLE `car`
 (
   `id`              varchar(255) NOT NULL DEFAULT '' COMMENT '商品ID',
@@ -23,7 +24,7 @@ CREATE TABLE `car`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-
+-- 车图
 CREATE TABLE `car_image`
 (
   `id`       varchar(255) NOT NULL DEFAULT '' COMMENT '图片ID',
@@ -32,3 +33,19 @@ CREATE TABLE `car_image`
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+
+-- 商家信息
+CREATE TABLE `shop`
+(
+  `id`          varchar(255) NOT NULL DEFAULT '' COMMENT '商家ID',
+  `name`        varchar(1024)         DEFAULT NULL COMMENT '商品名称',
+  `description` varchar(2048)         DEFAULT NULL COMMENT '商家描述',
+  `tel`         varchar(255)          DEFAULT NULL COMMENT '电话',
+  `wechat`      varchar(255)          DEFAULT NULL COMMENT '微信',
+  `banner`      varchar(2048)         DEFAULT NULL COMMENT '广告图',
+  `location`    varchar(255)          DEFAULT NULL COMMENT '地理位置',
+  `longitude`   varchar(255)          DEFAULT NULL COMMENT '经度',
+  `latitude`    varchar(255)          DEFAULT NULL COMMENT '纬度',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8

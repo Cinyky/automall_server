@@ -22,7 +22,7 @@ public interface IGoodsService {
     CommonResult addNewCar(Car car);
 
     /**
-     * 根据goodsId 获取对应的商品
+     * 根据 goodsId 获取对应的商品
      *
      * @param goodsId
      */
@@ -39,4 +39,11 @@ public interface IGoodsService {
      * @param goodsId
      */
     void deleteGoods(String goodsId);
+
+    /**
+     * 更新
+     *
+     * @param car
+     */
+    void update(Car car);
 }

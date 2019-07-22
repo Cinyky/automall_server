@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import personal.cyy.automall.common.CommonResult;
 import personal.cyy.automall.jpa.CarJPA;
 import personal.cyy.automall.model.Car;
+import personal.cyy.automall.service.inter.ICacheService;
 import personal.cyy.automall.service.inter.IGoodsService;
 import personal.cyy.automall.service.inter.IService;
 
@@ -20,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 @Service
-public class GoodsServiceImpl implements IGoodsService, IService {
+public class GoodsServiceImpl implements IService, IGoodsService, ICacheService<Car> {
 
     @Autowired
     private CarJPA carJPA;
@@ -29,35 +30,41 @@ public class GoodsServiceImpl implements IGoodsService, IService {
 
 
     private GoodsServiceImpl() {
+
+    }
+
+    @Override
+    public void init() {
         id2CarMap = new ConcurrentHashMap<>();
+        List<Car> allCars = carJPA.findAll();
+        allCars.stream().forEach(
+                car -> {
+                    putIntoCache(car);
+                }
+        );
     }
 
-//    private void checkNull() {
-//        if (id2CarMap == null) {
-//            id2CarMap = new ConcurrentHashMap<>();
-//        }
-//    }
-
-    private void putIntoCache(Car car) {
-//        checkNull();
+    @Override
+    public Car putIntoCache(Car car) {
         id2CarMap.put(car.getId(), car);
+        return car;
     }
 
-    private Car getFromCache(String carId) {
-//        checkNull();
-        if (id2CarMap.containsKey(carId)) {
-            return id2CarMap.get(carId);
+    @Override
+    public Car getFromCache(String id) {
+        if (id2CarMap.containsKey(id)) {
+            return id2CarMap.get(id);
         }
         return null;
     }
 
-    private void removeFromCache(String carId) {
-//        checkNull();
-        if (id2CarMap.containsKey(carId)) {
-            id2CarMap.remove(carId);
+    @Override
+    public Car removeFromCache(String id) {
+        if (id2CarMap.containsKey(id)) {
+            return id2CarMap.remove(id);
         }
+        return null;
     }
-
 
     /**
      * 增加新商品
@@ -103,20 +110,21 @@ public class GoodsServiceImpl implements IGoodsService, IService {
     public void deleteGoods(String goodsId) {
         Car car = getGoodsById(goodsId);
         if (car != null) {
-
             carJPA.deleteById(goodsId);
             removeFromCache(goodsId);
         }
 
     }
 
+    /**
+     * 更新
+     *
+     * @param car
+     */
     @Override
-    public void init() {
-        List<Car> allCars = carJPA.findAll();
-        allCars.stream().forEach(
-                car -> {
-                    putIntoCache(car);
-                }
-        );
+    public void update(Car car) {
+
     }
+
+
 }

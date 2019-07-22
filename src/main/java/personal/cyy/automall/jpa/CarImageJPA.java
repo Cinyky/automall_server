@@ -9,6 +9,7 @@ import personal.cyy.automall.model.CarImage;
 import java.io.Serializable;
 
 /**
+ * 车图片 JPA
  * @Author Cinyky
  * @Date 19:41 2019-05-16
  */
