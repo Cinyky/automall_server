@@ -48,4 +48,4 @@ CREATE TABLE `shop`
   `latitude`    varchar(255)          DEFAULT NULL COMMENT '纬度',
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8;
