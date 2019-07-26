@@ -31,16 +31,16 @@ public class GoodsApi extends IApi {
      */
     @GetMapping(value = "/list")
     @ResponseBody
-    public String getGoodsList() {
+    public Collection<Car> getGoodsList() {
         Collection<Car> allGoods = goodsService.getAllGoods();
-        return JSONObject.toJSONString(allGoods);
+        return allGoods;
     }
 
     @GetMapping(value = "/detail/{goodsId}")
     @ResponseBody
-    public String getSuchGoods(@PathVariable("goodsId") String goodsId) {
+    public Car getSuchGoods(@PathVariable("goodsId") String goodsId) {
         Car car = goodsService.getGoodsById(goodsId);
-        return JSONObject.toJSONString(car);
+        return car;
     }
 
 
