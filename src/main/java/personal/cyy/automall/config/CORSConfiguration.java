@@ -36,4 +36,5 @@ public class CORSConfiguration extends WebMvcConfigurationSupport {
         fastConverter.setFastJsonConfig(fastJsonConfig);
         converters.add(fastConverter);
     }
+
 }
