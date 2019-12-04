@@ -20,7 +20,6 @@ import java.util.Collection;
 
 @Controller
 @RequestMapping("/api/goods")
-@CrossOrigin
 public class GoodsApi extends IApi {
     @Autowired
     GoodsServiceImpl goodsService;
