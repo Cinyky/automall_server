@@ -19,16 +19,23 @@ public class SpingApplicationContext implements ApplicationContextAware {
      */
     private static ApplicationContext applicationContext;
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SpingApplicationContext.applicationContext = applicationContext;
-    }
-
     /**
      * @return ApplicationContext
      */
     public static ApplicationContext getApplicationContext() {
         return applicationContext;
+    }
+
+    /**
+     * 获取类型为requiredType的对象
+     *
+     * @param clz
+     * @return
+     * @throws org.springframework.beans.BeansException
+     */
+    public static <T> T getBean(Class<T> clz) throws BeansException {
+        T result = applicationContext.getBean(clz);
+        return result;
     }
 
     /**
@@ -43,16 +50,9 @@ public class SpingApplicationContext implements ApplicationContextAware {
         return (T) applicationContext.getBean(name);
     }
 
-    /**
-     * 获取类型为requiredType的对象
-     *
-     * @param clz
-     * @return
-     * @throws org.springframework.beans.BeansException
-     */
-    public static <T> T getBean(Class<T> clz) throws BeansException {
-        T result = (T) applicationContext.getBean(clz);
-        return result;
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        SpingApplicationContext.applicationContext = applicationContext;
     }
 
     /**

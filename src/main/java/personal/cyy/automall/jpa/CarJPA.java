@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 /**
  * 车 JPA
+ *
  * @Author Cinyky
  * @Date 19:41 2019-05-16
  */

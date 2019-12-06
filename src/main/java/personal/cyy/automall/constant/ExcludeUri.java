@@ -45,4 +45,5 @@ public enum ExcludeUri {
 
     public String getValue() {
         return value;
-    }}
+    }
+}

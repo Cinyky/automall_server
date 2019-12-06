@@ -54,9 +54,7 @@ public class FileServiceImpl implements IFileService, IService {
     }
 
     private void removeFromCache(String fileId) {
-        if (id2FileMap.containsKey(fileId)) {
-            id2FileMap.remove(fileId);
-        }
+        id2FileMap.remove(fileId);
 
     }
 

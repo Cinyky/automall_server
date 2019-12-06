@@ -27,6 +27,7 @@ public class GoodsApi extends IApi {
 
     /**
      * 获取所有的商品
+     *
      * @return
      */
     @GetMapping(value = "/list")
@@ -42,8 +43,6 @@ public class GoodsApi extends IApi {
         Car car = goodsService.getGoodsById(goodsId);
         return car;
     }
-
-
 
 
     @PostMapping(value = "/add")

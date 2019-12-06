@@ -46,10 +46,10 @@ public class ThumbnailTest {
         imgWriteParams = new javax.imageio.plugins.jpeg.JPEGImageWriteParam(
                 null);
         // 要使用压缩，必须指定压缩方式为MODE_EXPLICIT
-        imgWriteParams.setCompressionMode(imgWriteParams.MODE_EXPLICIT);
+        imgWriteParams.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
         // 这里指定压缩的程度，参数qality是取值0~1范围内，
         imgWriteParams.setCompressionQuality((float) 1);
-        imgWriteParams.setProgressiveMode(imgWriteParams.MODE_DISABLED);
+        imgWriteParams.setProgressiveMode(ImageWriteParam.MODE_DISABLED);
         ColorModel colorModel = ImageIO.read(new File(srcFilePath)).getColorModel();// ColorModel.getRGBdefault();
         // 指定压缩时使用的色彩模式
 //        imgWriteParams.setDestinationType(new javax.imageio.ImageTypeSpecifier(
@@ -82,10 +82,7 @@ public class ThumbnailTest {
     }
 
     public boolean isBlank(String string) {
-        if (string == null || string.length() == 0 || string.trim().equals("")) {
-            return true;
-        }
-        return false;
+        return string == null || string.length() == 0 || string.trim().equals("");
     }
 
     @Test

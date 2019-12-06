@@ -16,10 +16,6 @@ public enum SessionCheckType {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public static SessionCheckType getByValue(int value) {
         SessionCheckType type = null;
         SessionCheckType[] values = values();
@@ -32,6 +28,10 @@ public enum SessionCheckType {
             }
         }
         return type;
+    }
+
+    public int getValue() {
+        return value;
     }
 
 }

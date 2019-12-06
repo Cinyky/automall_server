@@ -29,7 +29,7 @@ public enum ResultCode implements IErrorCode {
 
     private String message;
 
-    private ResultCode(long code, String message) {
+    ResultCode(long code, String message) {
         this.code = code;
         this.message = message;
     }

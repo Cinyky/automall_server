@@ -84,6 +84,7 @@ public class GoodsController extends IController {
 
     /**
      * 商品列表
+     *
      * @param model
      * @return
      */
@@ -104,6 +105,7 @@ public class GoodsController extends IController {
 
     /**
      * 获取制定ID 的商品
+     *
      * @param carId
      * @param model
      * @return
@@ -114,7 +116,6 @@ public class GoodsController extends IController {
         model.addAttribute("car", car);
         return "goods/goods_detail";
     }
-
 
 
 }
