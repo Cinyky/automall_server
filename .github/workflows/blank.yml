@@ -1,7 +1,12 @@
-name: Test CI
+name: AutoMall - CI
 
 on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
   push:
+    branches:
+      - master
+
 
 jobs:
   build:
@@ -9,5 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Start
+        run: echo start ...
       - name: Jenkins execute
         run: curl http://106.12.34.36:8389/job/mall/build?token=TOKEN_AUTOMALL
