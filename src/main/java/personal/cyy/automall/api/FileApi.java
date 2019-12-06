@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import personal.cyy.automall.service.FileServiceImpl;
 
 /**
+ * File API
  * @Author Cinyky
  * @Date 15:24 2019-05-15
  */
