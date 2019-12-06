@@ -1,7 +1,7 @@
 name: Test CI
 
 on:
-  push
+  push:
 
 jobs:
   build:
@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Jenkins execute
+        run: curl http://106.12.34.36:8389/job/mall/build?token=TOKEN_AUTOMALL
