@@ -9,6 +9,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      #    - uses: actions/checkout@v1
-      - name: curl
+      - name: execute
       run: curl http://106.12.34.36:8389/job/mall/build?token=TOKEN_AUTOMALL
