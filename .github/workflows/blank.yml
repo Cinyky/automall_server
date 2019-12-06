@@ -1,9 +1,7 @@
 name: Test CI
 
 on:
-  push:
-    branches:    
-      - dev
+  push
 
 jobs:
   build:
