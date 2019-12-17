@@ -6,7 +6,11 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import personal.cyy.automall.common.CommonResult;
+import personal.cyy.automall.component.UrlComponent;
+import personal.cyy.automall.contract.UploadResponse;
 import personal.cyy.automall.service.FileServiceImpl;
+
+import java.net.UnknownHostException;
 
 /**
  * File API
@@ -20,6 +24,9 @@ import personal.cyy.automall.service.FileServiceImpl;
 public class FileApi {
     @Autowired
     private FileServiceImpl fileService;
+
+    @Autowired
+    private UrlComponent urlComponent;
 
     /**
      * 获取图片
@@ -41,10 +48,16 @@ public class FileApi {
      */
     @PostMapping(value = "/image/upload")
     @ResponseBody
-    public CommonResult uploadImage(@RequestParam("image") MultipartFile file) {
+    public UploadResponse uploadImage(@RequestParam("image") MultipartFile file) throws UnknownHostException {
         CommonResult commonResult = fileService.saveFormFile(file);
         String imageId = (String) commonResult.getData();
-        log.info("imageId: {}", imageId);
-        return commonResult;
+
+        UploadResponse uploadResponse = new UploadResponse();
+        uploadResponse.setImageId(imageId);
+        String url = urlComponent.getUrl() + "/api/file/image/" + imageId;
+        log.info("uploadImage imageId: {}， url: {}", imageId, url);
+        uploadResponse.setUrl(url);
+        uploadResponse.setDownloadURL(url);
+        return uploadResponse;
     }
 }
